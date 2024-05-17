@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import styles from "./Recipe.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addRecipes, recipeDetail } from "../../features/recipeSlice";
 import RecipeCard from "../RecipeCard/RecipeCard";
+import RecipeDetail from "../RecipeDetail/RecipeDetail";
 
 const Recipe = () => {
   const [error, setError] = useState(null);
@@ -27,7 +29,6 @@ const Recipe = () => {
       try {
         const response = await axios.request(options);
         dispatch(addRecipes(response.data.results));
-        // console.log(response.data.results);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -43,14 +44,16 @@ const Recipe = () => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <>
-          {recipes.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              recipe={recipe}
-            />
-          ))}
-        </>
+        <div className={styles.container}>
+          <div className={styles.recipe_card_container}>
+            {recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
+          <div className={styles.recipe_detail_container}>
+            <RecipeDetail />
+          </div>
+        </div>
       )}
     </>
   );

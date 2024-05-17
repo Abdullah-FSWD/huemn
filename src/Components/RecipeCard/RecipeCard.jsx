@@ -1,18 +1,24 @@
 import { recipeDetail } from "../../features/recipeSlice";
 import styles from "./RecipeCard.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import RecipeDetail from "../RecipeList/RecipeDetail";
+import { useDispatch } from "react-redux";
 
 const RecipeCard = ({ recipe }) => {
-  const recipes = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
 
-  const recipeDetails = () => {};
+  const handleDetailClick = () => {
+    dispatch(recipeDetail({ id: recipe.id }));
+  };
+
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.product_img}>
-          <img src={recipe.thumbnail_url} height="420" width="327" />
+          <img
+            src={recipe.thumbnail_url}
+            height="420"
+            width="327"
+            alt={recipe.name}
+          />
         </div>
         <div className={styles.product_info}>
           <div className={styles.product_text}>
@@ -26,7 +32,7 @@ const RecipeCard = ({ recipe }) => {
             </p>
             <button type="button">fav❣️</button>
             <button
-              onClick={() => dispatch(recipeDetail(recipe.id))}
+              onClick={handleDetailClick}
               className={styles.details_btn}
               type="button">
               Details
@@ -34,8 +40,8 @@ const RecipeCard = ({ recipe }) => {
           </div>
         </div>
       </div>
-      <RecipeDetail />
     </>
   );
 };
+
 export default RecipeCard;

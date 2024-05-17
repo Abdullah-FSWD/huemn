@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 80vh; /* Full viewport height */
+}
+
+.recipe_card_container {
+  flex: 1;
+  margin-right: 20px;
+  max-height: 100vh; /* Restrict height to viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: sticky;
+  top: 0; /* Stick to the top of the viewport */
+}
+
+.recipe_detail_container {
+  flex: 1;
+}

@@ -2,7 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   recipes: [],
-  singleRecipe: {},
+  singleRecipe: null,
 };
 
 export const recipeSlice = createSlice({
@@ -13,9 +13,9 @@ export const recipeSlice = createSlice({
       state.recipes = action.payload;
     },
     recipeDetail: (state, action) => {
-      state.singleRecipe = state.recipes.filter(
-        (recipe) => recipe.id === action.payload
-      );
+      const { id } = action.payload;
+      const recipe = state.recipes.find((recipe) => recipe.id === id);
+      state.singleRecipe = recipe || null;
     },
   },
 });

@@ -1,0 +1,39 @@
+.recipe_detail {
+  padding: 1rem;
+  max-width: 400px; /* Limit the width of the RecipeDetail component */
+  max-height: 100vh;
+  animation: openBook 0.5s ease forwards; /* Animation applied */
+}
+
+.recipe_detail_heading {
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.recipe_detail_description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.recipe_detail_image_container {
+  width: 350px;
+}
+
+.recipe_detail_image {
+  max-width: 100%; /* Ensure the image doesn't overflow its container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 7px; /* Apply border radius to the image */
+  margin-bottom: 1rem;
+}
+
+@keyframes openBook {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
